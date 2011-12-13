@@ -1,0 +1,4 @@
+Name: OpenURL
+Package: com.understruction.openurl
+Description: Opens urls from the command line
+Usage: openurl http://evilpengu.in
