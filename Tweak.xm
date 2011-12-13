@@ -10,8 +10,8 @@
 #import <AppSupport/CPDistributedMessagingCenter.h>
  
 @interface SpringBoard 
-- (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating;
-- (NSDictionary *)openURLCommand:(NSString *)name withUserInfo:(NSDictionary *)userInfo;
+	- (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating;
+	- (NSDictionary *)openURLCommand:(NSString *)name withUserInfo:(NSDictionary *)userInfo;
 @end
  
 %hook SpringBoard 
