@@ -10,7 +10,8 @@
 #import <AppSupport/CPDistributedMessagingCenter.h>
  
 @interface SpringBoard 
-- (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating;;
+- (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating;
+- (NSDictionary *)openURLCommand:(NSString *)name withUserInfo:(NSDictionary *)userInfo;
 @end
  
 %hook SpringBoard 
@@ -19,12 +20,12 @@
 	[messagingCenter runServerOnCurrentThread];
 	[messagingCenter registerForMessageName:@"openurl" 
 									 target:self 
-								   selector:@selector(handleOpenCommand:withUserInfo:)];
+								   selector:@selector(openURLCommand:withUserInfo:)];
 	return %orig;
 }
 
 %new
-- (NSDictionary *)handleOpenCommand:(NSString *)name withUserInfo:(NSDictionary *)userInfo {
+- (NSDictionary *)openURLCommand:(NSString *)name withUserInfo:(NSDictionary *)userInfo {
     NSString *url = [userInfo objectForKey:@"url"];
 	if (![url hasPrefix:@"http://"]) url = [NSString stringWithFormat:@"http://%@", url];
     [self applicationOpenURL:[NSURL URLWithString:url] publicURLsOnly:NO animating:YES];
