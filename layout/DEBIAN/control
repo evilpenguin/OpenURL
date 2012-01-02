@@ -1,7 +1,7 @@
 Package: com.understruction.openurl
 Name: OpenURL
 Depends: mobilesubstrate
-Version: 0.5.0
+Version: 0.5.1
 Architecture: iphoneos-arm
 Description: Opens urls from the commandline
 Maintainer: EvilPenguin|
