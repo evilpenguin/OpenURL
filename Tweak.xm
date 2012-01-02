@@ -1,6 +1,6 @@
 /*
  * Project: OpenURL
- * Version: 0.5.0
+ * Version: 0.5.1
  * Author:	EvilPenguin|
  *
  *
