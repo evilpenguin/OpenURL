@@ -1,6 +1,6 @@
 /*
  * Project: OpenURL
- * Version: 0.5.0
+ * Version: 0.6.0
  * Author:	EvilPenguin|
  *
  *
@@ -26,8 +26,7 @@
 
 %new
 - (NSDictionary *)openURLCommand:(NSString *)name withUserInfo:(NSDictionary *)userInfo {
-    NSString *url = [userInfo objectForKey:@"url"];
-	if (![url hasPrefix:@"http://"]) url = [NSString stringWithFormat:@"http://%@", url];
+    NSString *url =  ([[userInfo objectForKey:@"url"] rangeOfString:@"://"].location == NSNotFound ? [NSString stringWithFormat:@"http://%@", [userInfo objectForKey:@"url"]] : [userInfo objectForKey:@"url"]);	
     [self applicationOpenURL:[NSURL URLWithString:url] publicURLsOnly:NO animating:YES];
 	return [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:@"returnStatus"];
 }
